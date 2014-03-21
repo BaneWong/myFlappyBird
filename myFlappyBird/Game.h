@@ -10,4 +10,16 @@
 
 @interface Game : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIImageView *bird;
+@property (weak, nonatomic) IBOutlet UIButton *startGame;
+
+
+@property (strong,nonatomic) NSTimer *birdMovement;
+@property int birdFlight;
+
+
+@property BOOL gameStarted;
+
+- (IBAction)start:(UIButton *)sender;
+- (void)birdMoving;
 @end
