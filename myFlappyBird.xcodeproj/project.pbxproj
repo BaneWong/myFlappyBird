@@ -12,6 +12,10 @@
 		9CA70E6318DC63880098E4B3 /* birdUp.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CA70E5E18DC63880098E4B3 /* birdUp.png */; };
 		9CA70E6518DC63880098E4B3 /* tunnel.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CA70E6018DC63880098E4B3 /* tunnel.png */; };
 		9CA70E6818DC68AC0098E4B3 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA70E6718DC68AC0098E4B3 /* Game.m */; };
+		9CA70E6C18DDDB4F0098E4B3 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CA70E6B18DDDB4F0098E4B3 /* AudioToolbox.framework */; };
+		9CA70E6E18DDDEC10098E4B3 /* flapSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9CA70E6D18DDDEC10098E4B3 /* flapSound.wav */; };
+		9CA70E7018DDE1330098E4B3 /* fartSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9CA70E6F18DDE1330098E4B3 /* fartSound.wav */; };
+		9CA70E7218DE08F70098E4B3 /* beep.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9CA70E7118DE08F70098E4B3 /* beep.wav */; };
 		9CDC44C418DC61CA00099AEB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CDC44C318DC61CA00099AEB /* Foundation.framework */; };
 		9CDC44C618DC61CA00099AEB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CDC44C518DC61CA00099AEB /* CoreGraphics.framework */; };
 		9CDC44C818DC61CA00099AEB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CDC44C718DC61CA00099AEB /* UIKit.framework */; };
@@ -45,6 +49,10 @@
 		9CA70E6018DC63880098E4B3 /* tunnel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tunnel.png; sourceTree = "<group>"; };
 		9CA70E6618DC68AC0098E4B3 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
 		9CA70E6718DC68AC0098E4B3 /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
+		9CA70E6B18DDDB4F0098E4B3 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		9CA70E6D18DDDEC10098E4B3 /* flapSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = flapSound.wav; sourceTree = "<group>"; };
+		9CA70E6F18DDE1330098E4B3 /* fartSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = fartSound.wav; sourceTree = "<group>"; };
+		9CA70E7118DE08F70098E4B3 /* beep.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = beep.wav; sourceTree = "<group>"; };
 		9CDC44C018DC61CA00099AEB /* myFlappyBird.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myFlappyBird.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CDC44C318DC61CA00099AEB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9CDC44C518DC61CA00099AEB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -71,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CA70E6C18DDDB4F0098E4B3 /* AudioToolbox.framework in Frameworks */,
 				9CDC44C618DC61CA00099AEB /* CoreGraphics.framework in Frameworks */,
 				9CDC44C818DC61CA00099AEB /* UIKit.framework in Frameworks */,
 				9CDC44C418DC61CA00099AEB /* Foundation.framework in Frameworks */,
@@ -112,6 +121,7 @@
 		9CDC44C218DC61CA00099AEB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9CA70E6B18DDDB4F0098E4B3 /* AudioToolbox.framework */,
 				9CDC44C318DC61CA00099AEB /* Foundation.framework */,
 				9CDC44C518DC61CA00099AEB /* CoreGraphics.framework */,
 				9CDC44C718DC61CA00099AEB /* UIKit.framework */,
@@ -139,6 +149,9 @@
 		9CDC44CA18DC61CA00099AEB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9CA70E7118DE08F70098E4B3 /* beep.wav */,
+				9CA70E6D18DDDEC10098E4B3 /* flapSound.wav */,
+				9CA70E6F18DDE1330098E4B3 /* fartSound.wav */,
 				9CA70E5C18DC63880098E4B3 /* birdDown.png */,
 				9CA70E5D18DC63880098E4B3 /* gameBack.png */,
 				9CA70E5E18DC63880098E4B3 /* birdUp.png */,
@@ -245,6 +258,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CA70E7218DE08F70098E4B3 /* beep.wav in Resources */,
+				9CA70E6E18DDDEC10098E4B3 /* flapSound.wav in Resources */,
 				9CA70E6118DC63880098E4B3 /* birdDown.png in Resources */,
 				9CDC44DC18DC61CA00099AEB /* Images.xcassets in Resources */,
 				9CA70E6518DC63880098E4B3 /* tunnel.png in Resources */,
@@ -252,6 +267,7 @@
 				9CA70E6218DC63880098E4B3 /* gameBack.png in Resources */,
 				9CDC44D718DC61CA00099AEB /* Main.storyboard in Resources */,
 				9CA70E6318DC63880098E4B3 /* birdUp.png in Resources */,
+				9CA70E7018DDE1330098E4B3 /* fartSound.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,6 +417,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "myFlappyBird/myFlappyBird-Prefix.pch";
 				INFOPLIST_FILE = "myFlappyBird/myFlappyBird-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -414,6 +431,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "myFlappyBird/myFlappyBird-Prefix.pch";
 				INFOPLIST_FILE = "myFlappyBird/myFlappyBird-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

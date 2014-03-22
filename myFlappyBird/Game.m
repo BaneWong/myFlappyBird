@@ -13,6 +13,8 @@
 
 @interface Game ()
 
+
+
 @end
 
 @implementation Game
@@ -21,7 +23,8 @@
 @synthesize top,bottom,tunnelBottom,tunnelTop,tunnelMovement;
 @synthesize randomBottomTunnelPosition,randomTopTunnelPosition;
 @synthesize collisionDetected;
-
+@synthesize soundId;
+@synthesize score,scoreLabel;
 
 #pragma mark - Initialization
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -41,15 +44,20 @@
     
     self.tunnelTop.hidden=YES;
     self.tunnelBottom.hidden=YES;
+    self.scoreLabel.hidden=YES;
 }
 
 
 #pragma mark - UI Actions
 - (IBAction)start:(UIButton *)sender
 {
+    self.score=0;
+    self.scoreLabel.text=[NSString stringWithFormat:@"%d",score];
+    self.passedByTheGAP=NO;
     self.collisionDetected=NO;
     self.tunnelTop.hidden=NO;
     self.tunnelBottom.hidden=NO;
+    self.scoreLabel.hidden=NO;
     self.startGame.hidden=YES;
     self.gameStarted=YES;
     self.birdMovement=[NSTimer scheduledTimerWithTimeInterval:0.05f target:self selector:@selector(birdMoving) userInfo:nil repeats:YES];
@@ -62,12 +70,25 @@
 #pragma mark - Moving Methods
 - (void)birdMoving
 {
+    [self gap];
     [self collision];
+    
+    
     if (collisionDetected) {
+        self.gameStarted=NO;
+
         [self.birdMovement invalidate];
         [self.tunnelMovement invalidate];
         
-        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Collision Detected" message:@"end of game" delegate:self cancelButtonTitle:@"cancel" otherButtonTitles:@"OK", nil];
+        // fart sound
+        NSURL *url=[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"fartSound" ofType:@"wav"]];
+        AudioServicesCreateSystemSoundID((__bridge CFURLRef)url, &soundId);
+        AudioServicesPlaySystemSound(soundId);
+        // end sound
+        
+        
+        
+        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Flappy Bird" message:@"Game Over" delegate:self cancelButtonTitle:@"Play Again" otherButtonTitles:nil];
         [alert show];
         return;
     }
@@ -104,9 +125,23 @@
     
 }
 
+#pragma mark - AlertView Delegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSLog(@"clicked alert=%@   buttonIndex=%d",alertView.title,buttonIndex);
+    if (buttonIndex==0) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+        self.tunnelTop.hidden=YES;
+        self.tunnelBottom.hidden=YES;
+    }
+    
+    
+}
+
 #pragma mark - Working Methods
 -(void)placeTunnels
 {
+    self.passedByTheGAP=NO;
     // Top tunnel will be betwenn Y=-228 and Y=122
     self.randomTopTunnelPosition=arc4random() %350;
     self.randomTopTunnelPosition=self.randomTopTunnelPosition - 228;
@@ -144,6 +179,24 @@
     
 }
 
+-(void)gap
+{
+    if (self.passedByTheGAP) {
+        return;
+    }
+    
+    if (self.bird.center.x>self.tunnelTop.center.x) {
+        // beep sound
+        NSURL *url=[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"beep" ofType:@"wav"]];
+        AudioServicesCreateSystemSoundID((__bridge CFURLRef)url, &soundId);
+        AudioServicesPlaySystemSound(soundId);
+        // end sound
+        self.passedByTheGAP=YES;
+        score=score+1;
+        self.scoreLabel.text=[NSString stringWithFormat:@"%d",score];
+    }
+}
+
 #pragma mark - Touch Events
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
@@ -151,6 +204,13 @@
     if (!self.gameStarted) {
         return;
     }
+    
+    // Flapp sound
+    NSURL *url=[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"flapSound" ofType:@"wav"]];
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)url, &soundId);
+    AudioServicesPlaySystemSound(soundId);
+    // end sound
+    
     
     self.birdFlight=JUMP_HEIGTH;
 }

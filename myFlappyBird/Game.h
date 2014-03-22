@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AudioToolbox/AudioToolbox.h>
+
 
 @interface Game : UIViewController
 
@@ -17,6 +19,11 @@
 @property (weak, nonatomic) IBOutlet UIImageView *tunnelBottom;
 @property (weak, nonatomic) IBOutlet UIImageView *top;
 @property (weak, nonatomic) IBOutlet UIImageView *bottom;
+@property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
+
+
+
+
 
 @property (strong,nonatomic) NSTimer *birdMovement;
 @property (strong,nonatomic) NSTimer *tunnelMovement;
@@ -25,12 +32,15 @@
 @property int birdFlight;
 @property int randomTopTunnelPosition;
 @property int randomBottomTunnelPosition;
-
+@property int score;
 
 
 @property BOOL gameStarted;
 @property BOOL collisionDetected;
+@property BOOL passedByTheGAP;
 
+
+@property SystemSoundID soundId;
 
 #pragma mark - UI Actions
 - (IBAction)start:(UIButton *)sender;

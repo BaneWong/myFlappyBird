@@ -92,6 +92,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="12" y="10"/>
         </scene>
         <!--Game-->
         <scene sceneID="GT7-SG-cps">
@@ -141,6 +142,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="888" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cJb-Bt-alY">
+                                <rect key="frame" x="20" y="0.0" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -153,6 +161,7 @@
                     <connections>
                         <outlet property="bird" destination="ijy-qd-mYg" id="5A6-ZS-PLk"/>
                         <outlet property="bottom" destination="XzI-ko-xiT" id="ghN-Bl-bct"/>
+                        <outlet property="scoreLabel" destination="cJb-Bt-alY" id="YJO-jp-0Bl"/>
                         <outlet property="startGame" destination="oBz-5g-Gh0" id="VfR-iW-oOw"/>
                         <outlet property="top" destination="xnD-OB-Ul4" id="74d-jt-2mf"/>
                         <outlet property="tunnelBottom" destination="Ofj-Xk-QlE" id="0Ci-9h-dga"/>
@@ -161,7 +170,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0q1-ZO-AI0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="655" y="47"/>
+            <point key="canvasLocation" x="525" y="10"/>
         </scene>
     </scenes>
     <resources>
