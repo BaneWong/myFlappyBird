@@ -8,8 +8,8 @@
 
 #import "Game.h"
 
-#define JUMP_HEIGTH 25.00f
-#define TUNNEL_GAP 655.00f
+#define JUMP_HEIGTH 25.00f // Higher jump is harder to achieve
+#define TUNNEL_GAP 655.00f // Bigger GAP makes the 
 
 @interface Game ()
 
