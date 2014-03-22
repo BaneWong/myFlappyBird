@@ -29,6 +29,7 @@
 
 
 @property BOOL gameStarted;
+@property BOOL collisionDetected;
 
 
 #pragma mark - UI Actions

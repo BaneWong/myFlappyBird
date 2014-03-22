@@ -20,6 +20,7 @@
 @synthesize bird,startGame,birdMovement,birdFlight;
 @synthesize top,bottom,tunnelBottom,tunnelTop,tunnelMovement;
 @synthesize randomBottomTunnelPosition,randomTopTunnelPosition;
+@synthesize collisionDetected;
 
 
 #pragma mark - Initialization
@@ -46,6 +47,7 @@
 #pragma mark - UI Actions
 - (IBAction)start:(UIButton *)sender
 {
+    self.collisionDetected=NO;
     self.tunnelTop.hidden=NO;
     self.tunnelBottom.hidden=NO;
     self.startGame.hidden=YES;
@@ -60,6 +62,16 @@
 #pragma mark - Moving Methods
 - (void)birdMoving
 {
+    [self collision];
+    if (collisionDetected) {
+        [self.birdMovement invalidate];
+        [self.tunnelMovement invalidate];
+        
+        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Collision Detected" message:@"end of game" delegate:self cancelButtonTitle:@"cancel" otherButtonTitles:@"OK", nil];
+        [alert show];
+        return;
+    }
+    
     self.bird.center=CGPointMake(self.bird.center.x, self.bird.center.y - self.birdFlight);
     // make the bird fall any tick
     self.birdFlight=self.birdFlight-5;
@@ -104,6 +116,31 @@
     
     self.tunnelTop.center=CGPointMake(340, randomTopTunnelPosition);
     self.tunnelBottom.center=CGPointMake(340, randomBottomTunnelPosition);
+    
+}
+
+-(void)collision
+{
+    // Top collisions
+    if (CGRectIntersectsRect(self.bird.frame, self.top.frame)) {
+        self.collisionDetected=YES;
+    }
+    
+    // Bottom collisions
+    if (CGRectIntersectsRect(self.bird.frame, self.bottom.frame)) {
+        self.collisionDetected=YES;
+    }
+
+    // topTunnel collision
+    if (CGRectIntersectsRect(self.bird.frame, self.tunnelTop.frame)) {
+        self.collisionDetected=YES;
+    }
+
+    // bottomTunnel collision
+    if (CGRectIntersectsRect(self.bird.frame, self.tunnelBottom.frame)) {
+        self.collisionDetected=YES;
+    }
+
     
 }
 
