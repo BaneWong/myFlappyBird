@@ -128,7 +128,6 @@
 #pragma mark - AlertView Delegate
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    NSLog(@"clicked alert=%@   buttonIndex=%d",alertView.title,buttonIndex);
     if (buttonIndex==0) {
         [self dismissViewControllerAnimated:YES completion:nil];
         self.tunnelTop.hidden=YES;
