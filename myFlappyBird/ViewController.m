@@ -13,13 +13,35 @@
 @end
 
 @implementation ViewController
+@synthesize highScoreLabel;
 
+
+#pragma mark - Initialization
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    // Load score data
+    [self loadScore];
+}
+
+#pragma mark - Working Methods
+-(void)loadScore
+{
+    // Get stored score
+    NSString *storedScore=[[NSUserDefaults standardUserDefaults] objectForKey:@"score"];
+    int numericStoredScore=[storedScore intValue];
+    
+    NSMutableString *temp=[NSMutableString stringWithFormat:@"Higher Score: "];
+    [temp appendFormat:@"%d",numericStoredScore];
+    self.highScoreLabel.text=temp;
+}
+
+
+#pragma mark - Memory Warning
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

@@ -45,6 +45,11 @@
     self.tunnelTop.hidden=YES;
     self.tunnelBottom.hidden=YES;
     self.scoreLabel.hidden=YES;
+    
+    NSString *storedScore=[[NSUserDefaults standardUserDefaults] objectForKey:@"score"];
+    int numericStoredScore=[storedScore intValue];
+    
+    
 }
 
 
@@ -90,6 +95,9 @@
         
         UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Flappy Bird" message:@"Game Over" delegate:self cancelButtonTitle:@"Play Again" otherButtonTitles:nil];
         [alert show];
+        
+        [self highScoreTreatment];
+        
         return;
     }
     
@@ -195,6 +203,21 @@
         self.scoreLabel.text=[NSString stringWithFormat:@"%d",score];
     }
 }
+
+-(void)highScoreTreatment
+{
+    // Get stored score
+    NSString *storedScore=[[NSUserDefaults standardUserDefaults] objectForKey:@"score"];
+    int numericStoredScore=[storedScore intValue];
+    if (self.score>numericStoredScore) {
+        NSString *temp=[NSString stringWithFormat:@"%d",self.score];
+        [[NSUserDefaults standardUserDefaults] setObject:temp forKey:@"score"];
+    }
+    
+}
+
+
+
 
 #pragma mark - Touch Events
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event

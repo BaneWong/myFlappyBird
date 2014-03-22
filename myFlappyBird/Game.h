@@ -34,7 +34,6 @@
 @property int randomBottomTunnelPosition;
 @property int score;
 
-
 @property BOOL gameStarted;
 @property BOOL collisionDetected;
 @property BOOL passedByTheGAP;
